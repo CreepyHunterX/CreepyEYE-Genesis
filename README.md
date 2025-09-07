@@ -163,6 +163,17 @@ Use responsibly and within the law.
 
 ---
 
+## 💸 Support CreepyEYE
+
+If you enjoy CreepyEYE and want to support its development, you can do so via:
+
+- [Ko-fi](https://ko-fi.com/creepyhunterx)  
+- [BuyMeACoffee](https://buymeacoffee.com/CreepyHunterX)  
+
+Your support helps us add new APIs, improve graphics and performance, and provide stable updates. 🙌
+
+---
+
 ### Available translations / Доступні переклади / Доступные переводы
 
 [![🇺🇦 Українська версія](https://img.shields.io/badge/Документація-Українська-blue)](README_ua.md) [![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](README_ru.md)

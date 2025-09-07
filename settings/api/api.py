@@ -25,8 +25,6 @@ NUMVERIFY_API_KEY = os.getenv("NUMVERIFY_API_KEY")
 GREYNOISE_API_KEY = os.getenv("GREYNOISE_API_KEY")
 EMAILREP_API_KEY = os.getenv("EMAILREP_API_KEY")
 WHOIS_API_KEY = os.getenv("WHOIS_API_KEY")
-TG_API_ID = os.getenv("TG_API_ID")
-TG_API_HASH = os.getenv("TG_API_HASH")
 
 def validate_api_key(api_key, api_name="API", language="en"):
     from settings.helpers import check_api_key  

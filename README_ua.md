@@ -3,7 +3,6 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)  ![Status: Alpha](https://img.shields.io/badge/status-alpha-orange)  ![Python](https://img.shields.io/badge/python-3.8%2B-blue) ![OS](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-
 | Windows | Linux |
 |---------|-------|
 | ![CE Win](./PNG/CE_Windows_ua.png) | ![CE Linux](./PNG/CE_Linux_ua.png) |
@@ -168,6 +167,16 @@
 > ⚠️ Повний список API буде опублікований ближче до релізу.
 
 ---
+
+## 💸 Підтримати CreepyEYE
+
+Якщо вам подобається CreepyEYE і ви хочете підтримати розвиток інструменту, ви можете зробити це через:
+
+- [Ko-fi](https://ko-fi.com/creepyhunterx)  
+- [BuyMeACoffee](https://buymeacoffee.com/CreepyHunterX)  
+
+Ваша підтримка допомагає нам додавати нові API, покращувати графіку та швидкодію, а також забезпечувати стабільні оновлення. 🙌
+
 
 ### Доступні переклади / Available translations / Доступные переводы
 
