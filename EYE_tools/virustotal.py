@@ -6,7 +6,7 @@
 # ================================
 
 
-import json, logging
+import json, logging, re
 from settings.translations import status_messages, info_details, error_details, check_messages
 from settings.api.api import VIRUSTOTAL_API_KEY, validate_api_key
 from settings.config import SHOW_JSON
@@ -16,13 +16,29 @@ from termcolor import colored
 
 logger = logging.getLogger("EYE_tools.virustotal")
 
-def virustotal(ip, language="en"):
-    logger.info("\n" + check_messages[language]["virustotal_check"].format(query=ip))
+
+def is_ip(target):
+    return re.match(r'^\d{1,3}(\.\d{1,3}){3}$', target) is not None
+
+def virustotal(target, language="en"):
+    logger.info("\n" + check_messages[language]["virustotal_check"].format(query=target))
     if not validate_api_key(VIRUSTOTAL_API_KEY, "VirusTotal", language=language):
         return
     try:
-        url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
-        data = make_request("GET", url, api_key=VIRUSTOTAL_API_KEY, language=language)
+        if is_ip(target):
+            endpoint = f"ip_addresses/{target}"
+        else:
+            endpoint = f"domains/{target}"
+
+        url = f"https://www.virustotal.com/api/v3/{endpoint}"
+
+        data = make_request(
+            "GET",
+            url,
+            api_key=VIRUSTOTAL_API_KEY,
+            key_type="x-apikey",
+            language=language
+        )
 
         if data and isinstance(data, dict):
             if SHOW_JSON:
@@ -37,6 +53,7 @@ def virustotal(ip, language="en"):
                 log_warning_yellow(status_messages[language]["no_results"])
         else:
             log_warning_yellow(error_details[language]["empty_response"])
+
     except json.JSONDecodeError as e:
         log_error_red(error_details[language]["json_decode_error"].format(e=e))
     except Exception as e:

@@ -5,24 +5,26 @@
 # License: MIT
 # ================================
 
-import requests
-import logging
+import requests, logging, json
 from settings.proxy.tor import get_smart_session
 from settings.translations import error_details
 from settings.helpers import log_error_red
 logger = logging.getLogger("settings.make_request")
 
-def make_request(method, url, params=None, api_key=None, data=None, files=None, timeout=10, language="en"):
+def make_request(method, url, params=None, api_key=None, data=None, files=None, timeout=10, language="en",  key_type="Bearer"):
     session = get_smart_session(language)
-    if api_key is None:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (compatible; CreepyEYE Genesis)",
-        }
-    else:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (compatible; CreepyEYE Genesis)",
-            "Authorization": f"Bearer {api_key}"
-        }
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+    }
+
+    if api_key:
+        if key_type == "Bearer":
+            headers["Authorization"] = f"Bearer {api_key}"
+        elif key_type == "Key":
+            headers["Key"] = api_key
+        elif key_type == "x-apikey": 
+            headers["x-apikey"] = api_key
 
     try:
         if method == "GET":
@@ -36,8 +38,9 @@ def make_request(method, url, params=None, api_key=None, data=None, files=None, 
 
         try:
             return res.json()
-        except Exception:
+        except json.JSONDecodeError:
             return res.text
+
         
     except requests.exceptions.Timeout:
         log_error_red(error_details[language]["request_timeout"].format(url=url))

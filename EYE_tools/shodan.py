@@ -29,7 +29,14 @@ def shodan_scan(query, language="en"):
     }
     
     try:
-        response = make_request("GET", url=base_url_search, params=params_search, language=language)
+        response = make_request(
+        "GET",
+        base_url_host + query,  
+        api_key=SHODAN_API_KEY,
+        key_type="Bearer", 
+        language=language
+        )
+
         if response is None:
             return
         

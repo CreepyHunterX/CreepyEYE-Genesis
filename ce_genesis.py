@@ -7,10 +7,10 @@
 
 
 import time, logging, re, ipaddress   
-from settings.translations import status_messages, menu, menu_details, warnings, error_details
-from settings.helpers import center_text, clear_text, open_api_env, init_language, ask_language_choice, log_warning_yellow
+from settings.translations import status_messages, menu, menu_details, warnings, error_details, settings_details
+from settings.helpers import center_text, clear_text, open_api_env, init_language, ask_language_choice, log_warning_yellow, restart_program
 from settings.config import setup_logging
-from settings.proxy.tor import  get_smart_session, is_tor_running
+from settings.proxy.tor import get_smart_session, is_tor_running
 from EYE_tools.spiderfoot import stop_spiderfoot, spiderfoot
 from EYE_tools.hunter_io import hunter_io
 from EYE_tools.shodan import shodan_scan
@@ -29,6 +29,8 @@ language = init_language()
 
 setup_logging()
 logger = logging.getLogger("EYE_tools.helpers")
+
+
 
 def is_valid_phone(phone):
     cleaned = re.sub(r"[ \-\(\)]", "", phone)
@@ -161,6 +163,11 @@ def main(language):
 
         elif choice == '6':
             open_api_env(language) 
+            input(settings_details[language]["restart_required"])
+            stop_spiderfoot(language)
+            time.sleep(1)
+            clear_text()
+            break
 
         elif choice == '7':
             session = get_smart_session(language)

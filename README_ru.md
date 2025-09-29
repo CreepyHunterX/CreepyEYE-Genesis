@@ -1,19 +1,18 @@
-# CreepyEYE Genesis
+# <img src="PNG/CreepyEYE_mini_baner.png" style="height: 100px !important;width: 300px !important;" ></a>
 
-![License: MIT](https://img.shields.io/badge/license-MIT-green)  ![Status: Alpha](https://img.shields.io/badge/status-alpha-orange)  ![Python](https://img.shields.io/badge/python-3.8%2B-blue) ![OS](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-| Windows | Linux |
-|---------|-------|
-| ![CE Win](./PNG/CE_Windows_ru.png) | ![CE Linux](./PNG/CE_Linux_ru.png) |
+![License: MIT](https://img.shields.io/badge/License-MIT-purple) 
+![Status: Stable](https://img.shields.io/badge/Status-Stable-green) 
+![Version: 1.0](https://img.shields.io/badge/Version-1.0-darkred.svg)
+![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue) 
+![OS: Windows/Linux/Mac](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
+![Last Commit](https://img.shields.io/github/last-commit/CreepyHunterX/CreepyEYE-Genesis.svg)
+![Open Issues](https://img.shields.io/github/issues/CreepyHunterX/CreepyEYE-Genesis.svg)
+&nbsp;
 
 
 ## ⚠️ ВАЖНО!
 **CreepyEYE Genesis** — это инструмент OSINT (Open Source Intelligence), который помогает искать информацию по имени пользователя, email, IP, телефону, Telegram и другим параметрам на различных сервисах.  
 **Используйте только в этических целях! Разработчики не несут ответственности за ваши действия.**
-
-⚠️ **Примечание:** CreepyEYE Genesis находится в стадии **Alpha**.  
-Не все API полностью протестированы. Используйте с осторожностью.
 
 ⚠️ Внимание! Эта русская версия является **community-переводом**.  
 Официальные языки: английский и украинский.  
@@ -21,6 +20,13 @@
 Используйте на свой страх и риск. CreepyEYE предназначен только для **этичного OSINT**.
 
 ---
+
+| Windows | Linux |
+|---------|-------|
+| ![CE Win](./PNG/CE_Windows_ru.png) | ![CE Linux](./PNG/CE_Linux_ru.png) |
+
+
+
 
 ## 🛠️ Возможности
 
@@ -33,7 +39,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;через `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`, `SpiderFoot`  
 📱 Телефоны: `Numverify`  
 🧅 Поддержка Tor для анонимности  
-🈯 Меню выбора языка (`Украинский` / `Английский`)  
+🈯 Меню выбора языка (`Украинский` / `Английский` / `Русский`)  
 ⚙️ Автоматическая установка зависимостей
 
 ---
@@ -114,7 +120,7 @@
 | AbuseIPDB    | [https://www.abuseipdb.com/](https://www.abuseipdb.com/)   | Проверка, не сообщалось ли о вредоносной активности с IP |
 | Hunter.io    | [https://hunter.io/](https://hunter.io/)                   | Проверка email и поиск по домену                         |
 | Numverify    | [https://numverify.com/](https://numverify.com/)           | Проверка номеров телефонов                               |
-| GreyNoise    | [https://api.greynoise.io/](https://api.greynoise.io/)     | Контекст сканеров/ботов                                  |
+| GreyNoise    | [https://greynoise.io/](https://api.greynoise.io/)     | Контекст сканеров/ботов                                  |
 | EmailRep.io  | [https://emailrep.io/](https://emailrep.io/)               | Репутация email адресов                                  |
 | WhoisXML API | [https://whoisxmlapi.com/](https://whoisxmlapi.com/)       | WHOIS данные и информация о доменах                      |
 | VirusTotal   | [https://www.virustotal.com/](https://www.virustotal.com/) | Сканирование IP, доменов и файлов на вирусы              |
@@ -174,8 +180,9 @@
 
 Если вам нравится CreepyEYE и вы хотите поддержать его развитие, вы можете сделать это через:
 
-- [Ko-fi](https://ko-fi.com/creepyhunterx)  
-- [BuyMeACoffee](https://buymeacoffee.com/CreepyHunterX)  
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F71KKMAH)
+
+[<a href="https://www.buymeacoffee.com/CreepyHunterX" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>](https://buymeacoffee.com/CreepyHunterX)
 
 Ваша поддержка помогает нам добавлять новые API, улучшать графику и производительность, а также обеспечивать стабильные обновления. 🙌
 

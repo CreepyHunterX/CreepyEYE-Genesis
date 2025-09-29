@@ -29,6 +29,7 @@ def hunter_io(email, language="en"):
         params = {"domain": domain, "api_key": HUNTER_API_KEY}
         data = make_request("GET", url, params=params, language=language)
 
+
         if data and isinstance(data, dict):
             if SHOW_JSON:
                 print(json.dumps(data, indent=2, ensure_ascii=False))

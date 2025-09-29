@@ -33,6 +33,7 @@
 
 ### Інші мови:
 
-[![🇬🇧 English version](https://img.shields.io/badge/Documentation-English-lightgrey)](SECURITY.md) [![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](SECURITY_ru.md)
+[![🇬🇧 English version](https://img.shields.io/badge/Documentation-English-lightgrey)](SECURITY.md)&nbsp;
+[![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](SECURITY_ru.md)
 
 ---

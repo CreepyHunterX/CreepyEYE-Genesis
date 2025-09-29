@@ -1,7 +1,19 @@
-# CreepyEYE Genesis
+# <img src="PNG/CreepyEYE_mini_baner.png" style="height: 100px !important;width: 300px !important;" ></a>
 
-![License: MIT](https://img.shields.io/badge/license-MIT-green)  ![Status: Alpha](https://img.shields.io/badge/status-alpha-orange)  ![Python](https://img.shields.io/badge/python-3.8%2B-blue) ![OS](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
-&nbsp;&nbsp;&nbsp;&nbsp;
+![License: MIT](https://img.shields.io/badge/License-MIT-purple) 
+![Status: Stable](https://img.shields.io/badge/Status-Stable-green) 
+![Version: 1.0](https://img.shields.io/badge/Version-1.0-darkred.svg)
+![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue) 
+![OS: Windows/Linux/Mac](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
+![Last Commit](https://img.shields.io/github/last-commit/CreepyHunterX/CreepyEYE-Genesis.svg)
+![Open Issues](https://img.shields.io/github/issues/CreepyHunterX/CreepyEYE-Genesis.svg)
+&nbsp;
+
+## ⚠️ IMPORTANT!
+**CreepyEYE Genesis** is an OSINT (Open Source Intelligence) tool that helps you search information by username, email, IP, phone number, Telegram, and other parameters across various services.  
+**Use only for ethical purposes! The developers are not responsible for your actions.**
+
+---
 
 | Windows | Linux |
 |---------|-------|
@@ -9,14 +21,7 @@
 
 
 
-## ⚠️ IMPORTANT!
-**CreepyEYE Genesis** is an OSINT (Open Source Intelligence) tool that helps you search information by username, email, IP, phone number, Telegram, and other parameters across various services.  
-**Use only for ethical purposes! The developers are not responsible for your actions.**
 
-⚠️ **Note:** CreepyEYE Genesis is currently in **Alpha**.  
-Not all APIs have been fully tested yet. Use with caution.
-
----
 
 ## 🛠️ Features
 
@@ -29,7 +34,7 @@ Not all APIs have been fully tested yet. Use with caution.
 &nbsp;&nbsp;&nbsp;&nbsp;via `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`, `SpiderFoot`  
 📱 Phone numbers: `Numverify`  
 🧅 Tor support for anonymity  
-🈯 Language selection menu (`Ukrainian` / `English`)  
+🈯 Language selection menu (`Ukrainian` / `English` / `Russian`)  
 ⚙️ Automatic dependency installation
 
 ---
@@ -106,7 +111,7 @@ Open the file and insert your keys:
 | AbuseIPDB      | https://www.abuseipdb.com/                | Check if IP is reported for malicious activity  |
 | Hunter.io      | https://hunter.io/                        | Email verification and domain search            |
 | Numverify      | https://numverify.com/                     | Phone number validation                          |
-| GreyNoise      | https://api.greynoise.io/                 | Context on internet scanners / bots             |
+| GreyNoise      | https://greynoise.io/                 | Context on internet scanners / bots             |
 | EmailRep.io    | https://emailrep.io/                       | Reputation check of email addresses             |
 | WhoisXML API   | https://whoisxmlapi.com/                  | WHOIS data and domain info                        |
 | VirusTotal     | https://www.virustotal.com/               | Scan IPs, domains, and files for malware        |
@@ -167,8 +172,9 @@ Use responsibly and within the law.
 
 If you enjoy CreepyEYE and want to support its development, you can do so via:
 
-- [Ko-fi](https://ko-fi.com/creepyhunterx)  
-- [BuyMeACoffee](https://buymeacoffee.com/CreepyHunterX)  
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F71KKMAH)
+
+[<a href="https://www.buymeacoffee.com/CreepyHunterX" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>](https://buymeacoffee.com/CreepyHunterX)
 
 Your support helps us add new APIs, improve graphics and performance, and provide stable updates. 🙌
 

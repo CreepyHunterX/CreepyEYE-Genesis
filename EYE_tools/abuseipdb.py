@@ -6,7 +6,7 @@
 # ================================
 
 
-import json, logging
+import json, logging, requests
 from settings.translations import check_messages, info_details, error_details
 from settings.api.api import ABUSEIPDB_KEY, validate_api_key
 from settings.config import SHOW_JSON
@@ -24,8 +24,14 @@ def abuseipdb(query, language="en"):
     try:
         url = "https://api.abuseipdb.com/api/v2/check"
         querystring = {"ipAddress": query, "maxAgeInDays": "90"}
-        data = make_request("GET", url, params=querystring, api_key=ABUSEIPDB_KEY, language=language)
-
+        data = make_request(
+            "GET",
+            url,
+            params=querystring,
+            api_key=ABUSEIPDB_KEY,
+            key_type="Key", 
+            language=language
+        )
         if data and isinstance(data, dict):
             if SHOW_JSON:
                 print(json.dumps(data, indent=2, ensure_ascii=False))
@@ -36,6 +42,9 @@ def abuseipdb(query, language="en"):
             return
     except json.JSONDecodeError as e:
         log_error_red(error_details[language]["json_error"].format(e=e))
+        return
+    except requests.exceptions.RequestException as e:
+        log_error_red(f"[HTTP ERROR] {str(e)}")
         return
     except Exception as e:
         log_error_red(error_details[language]["error"].format(e=e))

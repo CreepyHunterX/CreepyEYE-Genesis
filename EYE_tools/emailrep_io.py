@@ -37,7 +37,8 @@ def emailrep_io(email, language):
         return
     
     try:
-        result = make_request("GET", url, api_key=EMAILREP_API_KEY, language=language)
+        result = make_request("GET", url, api_key=EMAILREP_API_KEY, key_type="Bearer", language=language)
+
         if result and isinstance(result, dict):
             if SHOW_JSON:
                 print(json.dumps(result, indent=2, ensure_ascii=False))

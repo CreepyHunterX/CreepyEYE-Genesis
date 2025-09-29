@@ -48,12 +48,14 @@ check_messages = {
     }
 }
 
+
 status_messages = {
     "uk": {
         "processing": "[~] Обробка запиту: {query}",
         "results_found": "[+] Знайдено:",
         "no_results": "[-] Нічого не знайдено.",
-        "tor_status_active": "[+] Tor увімкнено — з'єднання зашифровано"
+        "tor_status_active": "[+] Tor увімкнено — з'єднання зашифровано",
+        "": ""
     },
     "en": {
         "processing": "[~] Processing query: {query}",
@@ -133,7 +135,9 @@ warnings = {
         "missing_dependency": "[!] Модуль {module} відсутній!",
         "ascii_warning": "[!] Неможливо відобразити результати з не-ASCII символами. Використовується ASCII-only режим.",
         "tor_inactive_warning": "[!] Помилка підключення Tor — використовується стандартна мережа",
-
+        "check_failed_fallback": "[!] Неможливо перевірити доступ, fallback увімкнено",
+        "limited_whoi_active": "[!] Використовуємо обмежений режим WhoisService",
+        "community_api_fallback": "[!] Перехід на Community API (безкоштовна версія)"
     },
     "en": {
         "ethical_use_warning" : (
@@ -143,7 +147,10 @@ warnings = {
         "missing_module" : "[!] Warning - Without '{module_name}' some functions will not work.",
         "missing_dependency": "[!] Module {module} is missing!",
         "ascii_warning": "[!] Unable to display results with non-ASCII characters. ASCII-only mode is being used.",
-        "tor_inactive_warning": "[!] Tor connection error — standard network is being used"
+        "tor_inactive_warning": "[!] Tor connection error — standard network is being used",
+        "check_failed_fallback": "[!] Unable to verify access, fallback enabled",
+        "limited_whoi_active": "[!] Using limited WhoisService mode",
+        "community_api_fallback": "[!] Falling back to Community API (free endpoint)"
     
     },
     "ru": {
@@ -154,7 +161,10 @@ warnings = {
     "missing_module": "[!] Внимание — без '{module_name}' некоторые функции работать не будут.",
     "missing_dependency": "[!] Модуль {module} отсутствует!",
     "ascii_warning": "[!] Невозможно отобразить результаты с не-ASCII символами. Используется режим только ASCII.",
-    "tor_inactive_warning": "[!] Ошибка подключения Tor — используется стандартная сеть"
+    "tor_inactive_warning": "[!] Ошибка подключения Tor — используется стандартная сеть",
+    "check_failed_fallback": "[!] Невозможно проверить доступ, fallback включен",
+    "limited_whoi_active": "[!] Используется ограниченный режим WhoisService",
+    "community_api_fallback": "[!] Переход на Community API (бесплатная версия)"
     }
 }
 
@@ -330,7 +340,8 @@ settings_details = {
         "env_file_exists": "[!] Файл {env_path} вже існує.",
         "api_key_not_found": "[!] {api_name} не знайдено в api_keys.env файлі!",
         "invalid_api_key": "[!] Невірний API ключ для {api_name} !",
-        "too_many_attempts": "[!] Забагато невірних спроб. Вихід."
+        "too_many_attempts": "[!] Забагато невірних спроб. Вихід.",
+        "restart_required": "API ключі змінено. Натисніть Enter, щоб закрити CreepyEYE. Потім запустіть його вручну знову..."
     },
     "en": {
         "module_not_found": "[!] Module '{module_name}' not found. Install? (y/n): ",
@@ -344,7 +355,8 @@ settings_details = {
         "env_file_exists": "[!] File {env_path} already exists.",
         "api_key_not_found": "[!] {api_name} not found in api_keys.env file!",
         "invalid_api_key": "[!] Invalid API key for {api_name} !",
-        "too_many_attempts": "[!] Too many invalid attempts. Exiting."
+        "too_many_attempts": "[!] Too many invalid attempts. Exiting.",
+        "restart_required": "API keys have been changed. Press Enter to close CreepyEYE. Then restart it manually..."
     },
     "ru": {
         "module_not_found": "[!] Модуль '{module_name}' не найден. Установить? (y/n): ",
@@ -358,7 +370,8 @@ settings_details = {
         "env_file_exists": "[!] Файл {env_path} уже существует.",
         "api_key_not_found": "[!] {api_name} не найден в файле api_keys.env!",
         "invalid_api_key": "[!] Неверный API ключ для {api_name}!",
-        "too_many_attempts": "[!] Слишком много неверных попыток. Выход."
+        "too_many_attempts": "[!] Слишком много неверных попыток. Выход.",
+        "restart_required": "API ключи изменены. Нажмите Enter, чтобы закрыть CreepyEYE. Затем запустите его вручную..."
     }
 }
 

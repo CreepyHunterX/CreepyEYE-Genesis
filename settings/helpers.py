@@ -25,6 +25,11 @@ def get_system_language():
         pass
     return "en"
 
+
+
+    
+
+
 def init_language():
     lang = os.environ.get("LANGUAGE") or get_system_language()
     if lang not in SUPPORTED_LANGS:
@@ -105,9 +110,9 @@ def create_env_file_if_not_exists(env_path: Path, language="en"):
 IPINFO_TOKEN=your_ipinfo_token
 ABUSEIPDB_KEY=your_abuseipdb_key
 HUNTER_API_KEY=your_hunter_api_key
-VIRUSTOTAL_API_KEY=your_virustotal_api
+VIRUSTOTAL_API_KEY=your_virustotal_api_key
 NUMVERIFY_API_KEY=your_numverify_api_key
-GREYNOISE_API_KEY=your_greynoise_api_key 
+GREYNOISE_API_KEY=your_greynoise_api_key
 EMAILREP_API_KEY=your_emailrep_api_key
 WHOIS_API_KEY=your_whois_api_key
 """
