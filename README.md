@@ -1,4 +1,4 @@
-# <img src="PNG/CreepyEYE_mini_baner.png" style="height: 100px !important;width: 300px !important;" ></a>
+# ![CreepyEYE_mini_baner](./PNG/CreepyEYE_mini_baner.png)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-purple) 
 ![Status: Stable](https://img.shields.io/badge/Status-Stable-green) 
