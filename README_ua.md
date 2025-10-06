@@ -186,6 +186,8 @@
 
 ### Доступні переклади / Available translations / Доступные переводы
 
-[![🇬🇧 English version](https://img.shields.io/badge/Documentation-English-lightgrey)](README.md) [![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](README_ru.md)
+- 🇺🇦 Українська Версія (Цей переклад)
+- 🇷🇺 [Русская Версия](./README_ru.md)
+- 🇬🇧 [English Version](./README.md)
 
 ---
