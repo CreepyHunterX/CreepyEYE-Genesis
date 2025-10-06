@@ -43,8 +43,8 @@
 | Мова | Windows | Linux |
 |----------|---------|-------|
 | Українська | ![CE Win UA](./PNG/CE_Windows_ua.png) | ![CE Linux UA](./PNG/CE_Linux_ua.png) |
-| Російська  | ![CE Win RU](./PNG/CE_Windows_ru.png) | ![CE Linux RU](./PNG/CE_Linux_ru.png) |
-| Англіська | ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
+| Російська | ![CE Win RU](./PNG/CE_Windows_ru.png) | ![CE Linux RU](./PNG/CE_Linux_ru.png) |
+| Англіська  | ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
 
 ---
 
@@ -186,8 +186,6 @@
 
 ### Доступні переклади / Available translations / Доступные переводы
 
-- 🇺🇦 Українська Версія (Цей переклад)
-- 🇷🇺 [Русская Версия](./README_ru.md)
-- 🇬🇧 [English Version](./README.md)
+[![🇬🇧 English version](https://img.shields.io/badge/Documentation-English-lightgrey)](README.md) [![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](README_ru.md)
 
 ---
