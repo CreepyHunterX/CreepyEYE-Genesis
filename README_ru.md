@@ -180,8 +180,10 @@
 
 Если вам нравится CreepyEYE и вы хотите поддержать его развитие, вы можете сделать это через:
 
+### ☕ Ko-fi
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F71KKMAH)
 
+### 💛 Buy Me a Coffee
 [<a href="https://www.buymeacoffee.com/CreepyHunterX" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>](https://buymeacoffee.com/CreepyHunterX)
 
 Ваша поддержка помогает нам добавлять новые API, улучшать графику и производительность, а также обеспечивать стабильные обновления. 🙌
