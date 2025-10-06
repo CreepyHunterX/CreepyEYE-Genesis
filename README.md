@@ -182,6 +182,8 @@ Your support helps us add new APIs, improve graphics and performance, and provid
 
 ### Available translations / Доступні переклади / Доступные переводы
 
-[![🇺🇦 Українська версія](https://img.shields.io/badge/Документація-Українська-blue)](README_ua.md) [![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](README_ru.md)
+- 🇺🇦 [Українська версія](./README_ua.md)
+- 🇷🇺 [Русская Версия](./README_ru.md)
+- 🇬🇧 English Version (This Translation)
 
 ---

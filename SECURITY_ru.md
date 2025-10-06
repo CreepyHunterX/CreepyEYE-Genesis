@@ -35,7 +35,8 @@
 
 ### Другие языки:
 
-[![🇺🇦 Українська версія](https://img.shields.io/badge/Документація-Українська-blue)](SECURITY_ua.md) &nbsp;
-[![🇬🇧 English version](https://img.shields.io/badge/Documentation-English-lightgrey)](SECURITY.md) 
+- 🇺🇦 [Українська версія](./README_ua.md)
+- 🇷🇺 Русская версия (Этот перевод)
+- 🇬🇧 [Englis](./README.md)
 
 ---

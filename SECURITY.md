@@ -32,7 +32,9 @@
 ---
 
 ### Available translations
-[![🇺🇦 Українська версія](https://img.shields.io/badge/Документація-Українська-blue)](SECURITY_ua.md) &nbsp;
-[![Руская версия](https://img.shields.io/badge/Документация-Русская-red)](SECURITY_ru.md)
+- 🇺🇦 [Українська версія](./README_ua.md)
+- 🇷🇺 [Русская Версия](./README_ru.md)
+- 🇬🇧 English Version (This Translation)
+
 
 ---
