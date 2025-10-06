@@ -10,7 +10,7 @@
 &nbsp;
 
 ## ⚠️ IMPORTANT!
-**CreepyEYE Genesis** is an OSINT (Open Source Intelligence) tool that helps you search information by username, email, IP, phone number, Telegram, and other parameters across various services.  
+**CreepyEYE Genesis** is an OSINT (Open Source Intelligence) tool that helps you search information by username, email, IP, phone number, and other parameters across various services.  
 **Use only for ethical purposes! The developers are not responsible for your actions.**
 
 ---
