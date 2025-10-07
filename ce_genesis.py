@@ -8,7 +8,7 @@
 
 import time, logging, re, ipaddress   
 from settings.translations import status_messages, menu, menu_details, warnings, error_details, settings_details
-from settings.helpers import center_text, clear_text, open_api_env, init_language, ask_language_choice, log_warning_yellow, restart_program
+from settings.helpers import center_text, clear_text, open_api_env, init_language, ask_language_choice, log_warning_yellow
 from settings.config import setup_logging
 from settings.proxy.tor import get_smart_session, is_tor_running
 from EYE_tools.spiderfoot import stop_spiderfoot, spiderfoot
@@ -106,6 +106,7 @@ def main(language):
         elif choice == '1':
             username = input(menu_details[language]["input_username"]).strip()
             if username:
+                clear_text()
                 print(status_messages[language]["processing"].format(query=username))
                 search_by_sites_username(username, language)
             input(menu_details[language]["press_any_key"])
@@ -114,6 +115,7 @@ def main(language):
         elif choice == '2':
             email = input(menu_details[language]["input_email"]).strip()
             if is_valid_email(email):
+                clear_text()
                 print(status_messages[language]["processing"].format(query=email))
                 hunter_io(email, language)
                 emailrep_io(email, language)
@@ -126,6 +128,7 @@ def main(language):
         elif choice == '3':
             ip = input(menu_details[language]["input_ip"]).strip()
             if is_valid_ip(ip):
+                clear_text()
                 print(status_messages[language]["processing"].format(query=ip))
                 ipinfo(ip, language)
                 shodan_scan(ip, language)
@@ -141,6 +144,7 @@ def main(language):
         elif choice == '4':
             domain = input(menu_details[language]["input_domain"]).strip()
             if is_valid_domain(domain):
+                clear_text()
                 print(status_messages[language]["processing"].format(query=domain))
                 whois(domain, language)
                 virustotal(domain, language)
@@ -154,6 +158,7 @@ def main(language):
         elif choice == '5':
             phone = input(menu_details[language]["input_phone"]).strip()
             if is_valid_phone(phone):
+                clear_text()
                 print(status_messages[language]["processing"].format(query=phone))
                 numverify(phone, language)
             else: 
