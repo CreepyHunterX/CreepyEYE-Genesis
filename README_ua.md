@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-purple) 
 ![Status: Stable](https://img.shields.io/badge/Status-Stable-green) 
-![Version: 1.0](https://img.shields.io/badge/Version-1.1-darkred.svg)
+![Version: 1.0](https://img.shields.io/badge/Version-1.0-darkred.svg)
 ![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue) 
 ![OS: Windows/Linux/Mac](https://img.shields.io/badge/OS-Windows%20|%20Linux%20|%20Mac-lightgrey)
 ![Last Commit](https://img.shields.io/github/last-commit/CreepyHunterX/CreepyEYE-Genesis.svg)
