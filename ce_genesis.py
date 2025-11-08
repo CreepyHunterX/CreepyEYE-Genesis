@@ -110,7 +110,6 @@ def main(language):
                 print(status_messages[language]["processing"].format(query=username))
                 search_by_sites_username(username, language)
             input(menu_details[language]["press_any_key"])
-            clear_text()
 
         elif choice == '2':
             email = input(menu_details[language]["input_email"]).strip()
@@ -123,7 +122,6 @@ def main(language):
             else:
                 log_warning_yellow(error_details[language]["invalid_email"])
             input(menu_details[language]["press_any_key"])
-            clear_text()
 
         elif choice == '3':
             ip = input(menu_details[language]["input_ip"]).strip()
@@ -139,7 +137,6 @@ def main(language):
             else:
                 log_warning_yellow(error_details[language]["invalid_ip"])
             input(menu_details[language]["press_any_key"])
-            clear_text() 
 
         elif choice == '4':
             domain = input(menu_details[language]["input_domain"]).strip()
@@ -153,7 +150,6 @@ def main(language):
             else:
                 log_warning_yellow(error_details[language]["invalid_domain"])
             input(menu_details[language]["press_any_key"])
-            clear_text() 
 
         elif choice == '5':
             phone = input(menu_details[language]["input_phone"]).strip()
@@ -164,14 +160,12 @@ def main(language):
             else: 
                 log_warning_yellow(error_details[language]["invalid_phone"])
             input(menu_details[language]["press_any_key"])
-            clear_text()
 
         elif choice == '6':
             open_api_env(language) 
             input(settings_details[language]["restart_required"])
             stop_spiderfoot(language)
             time.sleep(1)
-            clear_text()
             break
 
         elif choice == '7':
@@ -189,7 +183,6 @@ def main(language):
             else:
                 print(warnings[language]["tor_inactive_warning"])
             input(menu_details[language]["press_any_key"])     
-            clear_text()
 
         elif choice == '8':
             language = ask_language_choice()
