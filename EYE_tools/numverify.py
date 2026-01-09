@@ -23,7 +23,7 @@ def numverify(phone, language="en"):
         return
     
     try:
-        url = "http://apilayer.net/api/validate"
+        url = "https://apilayer.net/api/validate"
         params = {
             "access_key": NUMVERIFY_API_KEY,
             "number": phone,

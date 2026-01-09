@@ -26,7 +26,7 @@ def get_tor_proxies():
 
 def test_tor_identity():
     try:
-        response = requests.get('http://httpbin.org/ip', proxies=get_tor_proxies(), timeout=5)
+        response = requests.get('https://httpbin.org/ip', proxies=get_tor_proxies(), timeout=5)
         if response.status_code == 200:
             return response.json().get("origin")
         else:

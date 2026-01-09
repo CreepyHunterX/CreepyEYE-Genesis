@@ -99,11 +99,11 @@ def tor_info(language):
         input(menu_details[language]["press_any_key"])
         return
     try:
-        ip_res = session.get("http://httpbin.org/ip", timeout=5)
+        ip_res = session.get("https://httpbin.org/ip", timeout=5)
         if ip_res.status_code == 200:
             ip = ip_res.json().get("origin")
             print(menu_details[language]["tor_ip"].format(ip=ip))
-        headers_res = session.get("http://httpbin.org/headers")
+        headers_res = session.get("https://httpbin.org/headers")
         print(headers_res.text)
     except Exception as e:
         print(error_details[language]["error"].format(e=e))
