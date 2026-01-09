@@ -1,10 +1,9 @@
-# ================================
+# ================================ 
 # 👁️‍🗨️ CreepyEYE Genesis MAIN 👁️‍🗨️
 # Author: CreepyHunterX aka ₵RɆɆ₽Ɏ X ₣RΔ₥Ɇ
 # Year: 2025
 # License: MIT
 # ================================
-
 
 import time, logging, re, ipaddress   
 from settings.translations import status_messages, menu, menu_details, warnings, error_details, settings_details
@@ -31,11 +30,10 @@ setup_logging()
 logger = logging.getLogger("EYE_tools.helpers")
 
 
-
+# ==================== Validators ====================
 def is_valid_phone(phone):
     cleaned = re.sub(r"[ \-\(\)]", "", phone)
     pattern = r"^\+?\d{9,15}$"
-    
     return bool(re.match(pattern, cleaned))
 
 def is_valid_email(email):
@@ -53,6 +51,7 @@ def is_valid_domain(query):
     return re.match(r"^(?!:\/\/)([a-zA-Z0-9-_]+\.)+[a-zA-Z]{2,11}$", query) is not None
 
 
+# ==================== Terminal utils ====================
 def get_terminal_height():
     try:
         import shutil
@@ -67,17 +66,138 @@ def count_newlines_for_center(text):
 
 def show_menu_diagonal(language):
     menu_items = menu[language]
-
     print("\n" + colored(" " + menu_details[language]['menu'].upper(), "magenta", attrs=["bold"]) + "\n")
-
-
     for i, item in enumerate(menu_items):
         print(item)
         time.sleep(0.1)
 
 
+# ==================== Input / process ====================
+def validated_input(prompt, validator, error_msg):
+    value = input(prompt).strip()
+    if not validator(value):
+        log_warning_yellow(error_msg)
+        time.sleep(1.2)
+        return None
+    return value
 
-# ======= MAIN =======
+def process(funcs, value, language):
+    if value is None:  # <-- guard: не чіпати API при invalid input
+        return
+    clear_text()
+    print(status_messages[language]["processing"].format(query=value))
+    for f in funcs:
+        f(value, language)
+    input(menu_details[language]["press_any_key"])
+
+
+# ==================== Tor info ====================
+def tor_info(language):
+    session = get_smart_session(language)
+    if not is_tor_running():
+        print(warnings[language]["tor_inactive_warning"])
+        input(menu_details[language]["press_any_key"])
+        return
+    try:
+        ip_res = session.get("http://httpbin.org/ip", timeout=5)
+        if ip_res.status_code == 200:
+            ip = ip_res.json().get("origin")
+            print(menu_details[language]["tor_ip"].format(ip=ip))
+        headers_res = session.get("http://httpbin.org/headers")
+        print(headers_res.text)
+    except Exception as e:
+        print(error_details[language]["error"].format(e=e))
+    input(menu_details[language]["press_any_key"])
+
+
+# ==================== Menu router ====================
+def handle_menu_choice(choice, language):
+    menu_router = {
+        "0": lambda: "exit",
+
+        "1": lambda: process(
+            [search_by_sites_username],
+            validated_input(
+                menu_details[language]["input_username"],
+                lambda x: len(x) > 2,
+                error_details[language]["invalid_username"]
+            ),
+            language
+        ),
+
+        "2": lambda: process(
+            [hunter_io, emailrep_io, spiderfoot],
+            validated_input(
+                menu_details[language]["input_email"],
+                is_valid_email,
+                error_details[language]["invalid_email"]
+            ),
+            language
+        ),
+
+        "3": lambda: process(
+            [ipinfo, shodan_scan, abuseipdb, greynoise, virustotal, spiderfoot],
+            validated_input(
+                menu_details[language]["input_ip"],
+                is_valid_ip,
+                error_details[language]["invalid_ip"]
+            ),
+            language
+        ),
+
+        "4": lambda: process(
+            [whois, virustotal, spiderfoot],
+            validated_input(
+                menu_details[language]["input_domain"],
+                is_valid_domain,
+                error_details[language]["invalid_domain"]
+            ),
+            language
+        ),
+
+        "5": lambda: process(
+            [numverify],
+            validated_input(
+                menu_details[language]["input_phone"],
+                is_valid_phone,
+                error_details[language]["invalid_phone"]
+            ),
+            language
+        ),
+
+        "6": lambda: "restart",
+
+        "7": lambda: tor_info(language),
+
+        "8": lambda: ask_language_choice()
+    }
+
+    action = menu_router.get(choice)
+
+    if not action:
+        print(colored(menu_details[language]["incorrect_option"], "red"))
+        time.sleep(1.2)
+        return language
+
+    result = action()
+
+    if result == "exit":
+        stop_spiderfoot(language)
+        return "exit"
+
+    if result == "restart":
+        open_api_env(language)
+        input(settings_details[language]["restart_required"])
+        stop_spiderfoot(language)
+        exit()
+
+    if isinstance(result, str):
+        return result
+
+    return language
+
+
+# ==================== Main loop ====================
 def main(language):
     title = """  
     ______                           ________  ________      _____                     _     
@@ -87,116 +207,25 @@ def main(language):
  \\____/_/   \\___/\\___/ .___/\\__, /_____/   /_/_____/     \\____/\\___/_/ /_/\\___/____/_/____/  
                       /_/    /____/                                                              
 """
-
     while True:
         clear_text()
         Console().print(center_text(title), style="magenta")
         print("\n" * count_newlines_for_center(title))
         show_menu_diagonal(language)
 
-        choice = input("\n" + colored(menu_details[language]["choose_option"], "magenta").strip())
-
-        if choice == '0':
-            print(menu_details[language]["exit_message"])
-            stop_spiderfoot(language)
-            time.sleep(1)
-            clear_text()
+        choice = input("\n" + colored(menu_details[language]["choose_option"], "magenta")).strip()
+        result = handle_menu_choice(choice, language)
+        if result == "break":
             break
+        elif isinstance(result, str):
+            language = result  
 
-        elif choice == '1':
-            username = input(menu_details[language]["input_username"]).strip()
-            if username:
-                clear_text()
-                print(status_messages[language]["processing"].format(query=username))
-                search_by_sites_username(username, language)
-            input(menu_details[language]["press_any_key"])
 
-        elif choice == '2':
-            email = input(menu_details[language]["input_email"]).strip()
-            if is_valid_email(email):
-                clear_text()
-                print(status_messages[language]["processing"].format(query=email))
-                hunter_io(email, language)
-                emailrep_io(email, language)
-                spiderfoot(email, language)
-            else:
-                log_warning_yellow(error_details[language]["invalid_email"])
-            input(menu_details[language]["press_any_key"])
-
-        elif choice == '3':
-            ip = input(menu_details[language]["input_ip"]).strip()
-            if is_valid_ip(ip):
-                clear_text()
-                print(status_messages[language]["processing"].format(query=ip))
-                ipinfo(ip, language)
-                shodan_scan(ip, language)
-                abuseipdb(ip, language)
-                greynoise(ip, language)
-                virustotal(ip, language)
-                spiderfoot(ip, language)
-            else:
-                log_warning_yellow(error_details[language]["invalid_ip"])
-            input(menu_details[language]["press_any_key"])
-
-        elif choice == '4':
-            domain = input(menu_details[language]["input_domain"]).strip()
-            if is_valid_domain(domain):
-                clear_text()
-                print(status_messages[language]["processing"].format(query=domain))
-                whois(domain, language)
-                virustotal(domain, language)
-                spiderfoot(domain, language)
-                input(menu_details[language]["press_any_key"])
-            else:
-                log_warning_yellow(error_details[language]["invalid_domain"])
-            input(menu_details[language]["press_any_key"])
-
-        elif choice == '5':
-            phone = input(menu_details[language]["input_phone"]).strip()
-            if is_valid_phone(phone):
-                clear_text()
-                print(status_messages[language]["processing"].format(query=phone))
-                numverify(phone, language)
-            else: 
-                log_warning_yellow(error_details[language]["invalid_phone"])
-            input(menu_details[language]["press_any_key"])
-
-        elif choice == '6':
-            open_api_env(language) 
-            input(settings_details[language]["restart_required"])
-            stop_spiderfoot(language)
-            time.sleep(1)
-            break
-
-        elif choice == '7':
-            session = get_smart_session(language)
-            if is_tor_running():
-                try:
-                    ip_res = session.get("http://httpbin.org/ip", timeout=5)
-                    if ip_res.status_code == 200:
-                        ip = ip_res.json().get("origin")
-                        print(menu_details[language]["tor_ip"].format(ip=ip))
-                    headers_res = session.get("http://httpbin.org/headers")
-                    print(headers_res.text)
-                except Exception as e:
-                    print(error_details[language]["error"].format(e=e))
-            else:
-                print(warnings[language]["tor_inactive_warning"])
-            input(menu_details[language]["press_any_key"])     
-
-        elif choice == '8':
-            language = ask_language_choice()
-
-        else:
-            print(colored(menu_details[language]["incorrect_option"], "red"))
-            time.sleep(1)
-
+# ==================== Entry point ====================
 if __name__ == "__main__":
-    
     print(colored("".join(warnings[language]["ethical_use_warning"]), "yellow"))
     print("=" * 60)
     input(menu_details[language]["press_any_key"])
     clear_text()
-
     setup_logging()
     main(language)

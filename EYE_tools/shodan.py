@@ -20,13 +20,7 @@ def shodan_scan(query, language="en"):
 
     print(check_messages[language]["shodan_check"].format(query=query))
     
-    base_url_search = "https://api.shodan.io/shodan/host/search"
     base_url_host = "https://api.shodan.io/shodan/host/"
-    
-    params_search = {
-        "key": SHODAN_API_KEY,
-        "query": query
-    }
     
     try:
         response = make_request(

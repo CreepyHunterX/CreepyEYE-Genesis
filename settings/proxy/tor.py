@@ -31,7 +31,7 @@ def test_tor_identity():
             return response.json().get("origin")
         else:
             return None
-    except Exception as e:
+    except Exception:
         return None
 
 def get_smart_session(language="en"):

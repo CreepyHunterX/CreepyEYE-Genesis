@@ -25,7 +25,7 @@ def hunter_io(email, language="en"):
 
     try:
         domain = email.split('@')[1]
-        url = f"https://api.hunter.io/v2/domain-search"
+        url = "https://api.hunter.io/v2/domain-search"
         params = {"domain": domain, "api_key": HUNTER_API_KEY}
         data = make_request("GET", url, params=params, language=language)
 

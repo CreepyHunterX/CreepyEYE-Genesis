@@ -87,7 +87,9 @@ error_details = {
         "invalid_email": "[!] Неправильний формат email.",
         "invalid_ip": "[!] Невірна IP-адреса.",
         "invalid_domain": "[!] Невірне доменне ім’я.",
-        "invalid_phone": "[!] Невірний номер телефону."
+        "invalid_phone": "[!] Невірний номер телефону.",
+        "invalid_username": "[!] Некоректне ім’я користувача"
+        
     },
     "en": {
         "key_error" : "[!] Key {e} not found in dictionary",
@@ -104,7 +106,8 @@ error_details = {
         "invalid_email": "[!] Invalid email format.",
         "invalid_ip": "[!] Invalid IP address.",
         "invalid_domain": "[!] Invalid domain name.",
-        "invalid_phone": "[!] Invalid phone number."
+        "invalid_phone": "[!] Invalid phone number.",
+        "invalid_username": "[!] Invalid username"
     },
     "ru": {
         "key_error": "[!] Ключ {e} не найден в словаре",
@@ -121,7 +124,8 @@ error_details = {
         "invalid_email": "[!] Неверный формат email.",
         "invalid_ip": "[!] Неверный IP-адрес.",
         "invalid_domain": "[!] Неверное имя домена.",
-        "invalid_phone": "[!] Неверный номер телефона."
+        "invalid_phone": "[!] Неверный номер телефона.",
+        "invalid_username": "[!] Некорректное имя пользователя"
     }
 }
 
@@ -389,7 +393,6 @@ spiderfoot_details = {
         "error": "[!] Помилка SpiderFoot: {error}",
         "process_not_found": "[!] Процес SpiderFoot не знайдено або вже зупинено",
         "missing_sf_script": "[!] Файл sf.py не знайдено! Перевір, чи Spiderfoot встановлено правильно.",
-        "start_error": "[!] Помилка запуску Spiderfoot: {e}",
         "sf_script_found": "[+] Знайдено sf.py",
         "spiderfoot_check": "[~] Виконується запит до Spiderfoot: {query}"
     },
@@ -406,7 +409,6 @@ spiderfoot_details = {
         "error": "[!] SpiderFoot Error: {error}",
         "process_not_found": "[!] SpiderFoot process not found or already stopped",
         "missing_sf_script": "[!] sf.py file not found! Check if Spiderfoot is installed correctly.",
-        "start_error": "[!] Error starting Spiderfoot: {e}",
         "sf_script_found": "[+] sf.py found",
         "spiderfoot_check": "[~] Making request to Spiderfoot: {query}"
     },

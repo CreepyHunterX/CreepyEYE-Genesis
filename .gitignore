@@ -1,3 +1,4 @@
 .env
 __pycache__/
 *.py[cod]
+settings/api/api_keys.env

@@ -40,7 +40,7 @@ def validate_api_key(api_key, api_name="API", language="en"):
 
     try:
         ok = check_api_key(api_key, api_name=api_name, language=language)
-    except Exception as e:
+    except Exception:
         log_warning_yellow(f"{settings_details[language]['invalid_api_key'].format(api_name=api_name)} (error during check)")
         return False
 

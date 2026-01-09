@@ -50,8 +50,6 @@ def stop_spiderfoot(language):
             print(colored(spiderfoot_details[language]["stop"], "green"))
         except Exception as e:
             log_error_red(spiderfoot_details[language]["stop_error"].format(e=e))
-    else:
-        log_warning_yellow(spiderfoot_details[language]["process_not_found"])
 
 def spiderfoot(query, language="en"):
     import requests

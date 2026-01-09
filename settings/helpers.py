@@ -59,7 +59,7 @@ except ImportError:
             else:
                 print(settings_details[language]["invalid_option"])
         print(settings_details[language]["too_many_attempts"])
-        time.sleep()
+        time.sleep(1)
         sys.exit()
     language = init_language()
 
@@ -77,7 +77,11 @@ def ask_language_choice():
     print("2. 🇺🇦 Українська")
     print("3. 🇷🇺 Русский")
     choice = input("→ ")
-    return "uk" if choice == "2" else "ru" if choice == "3" else "en"
+    if choice in ("2", "3"):
+        return "uk"
+    else:
+        return "en"
+
 
 def log_warning_yellow(message: str):
     colored_msg = colored(message, "yellow")
@@ -102,7 +106,7 @@ def open_api_env(language="en"):
             subprocess.run(["open", str(path)])
         else:
             subprocess.run(["xdg-open", str(path)])
-    except Exception as e:
+    except Exception:
         log_error_red(error_details[language]["env_errors"])
 
 def create_env_file_if_not_exists(env_path: Path, language="en"):
