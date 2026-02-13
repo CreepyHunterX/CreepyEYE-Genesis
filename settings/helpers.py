@@ -77,8 +77,10 @@ def ask_language_choice():
     print("2. 🇺🇦 Українська")
     print("3. 🇷🇺 Русский")
     choice = input("→ ")
-    if choice in ("2", "3"):
+    if choice == "2":
         return "uk"
+    elif choice == "3":
+        return "ru"
     else:
         return "en"
 
