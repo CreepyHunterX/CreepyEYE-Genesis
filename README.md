@@ -133,38 +133,20 @@ Use responsibly and within the law.
 
 ---
 
-## 🧠 CreepyEYE PRO (Development Roadmap)
+## 🧠 CreepyEYE PRO — out now 🎉
 
-> 🔥 *CreepyEYE PRO* is a ⚡ **premium version** of our OSINT tool with over **30 integrated APIs**,  
-> enabling deep searches, link mapping, encrypted session storage, and more.  
-> Perfect for OSINT pros, cyber intelligence, and digital forensics.
+**CreepyEYE PRO** is the premium edition of CreepyEYE — a desktop OSINT app for **Windows and Linux**
+with a **lifetime licence**: 37 integrations (bring your own API keys), scans by email, username,
+domain, phone, IP, name and photo EXIF, report export, proxy and Tor support, and up to 3 devices
+per key.
 
----
+📖 **For full information** — installation, activation, the full service list and the CLI reference —
+see **[github.com/CreepyHunterX/CreepyEYE-PRO](https://github.com/CreepyHunterX/CreepyEYE-PRO)**
 
-### 🛠️ Planned Features
+🛒 **Get it at [creepycore.com](https://creepycore.com/store)**
 
-- ✅ **Over 30 integrated APIs** (HaveIBeenPwned, Hunter.io, Shodan, and more)  
-- 🔍 **Deep search** for Telegram, IP, email, username, domains  
-- 🧩 **Graph View** — visualization of related entities  
-- 💾 **History and session saving with encryption option**  
-- 🛡️ **TOR / VPN mode support**  
-- 🖥️ **CLI + Web GUI** (Flask / FastAPI)  
-- 🐳 **Docker and Windows EXE builds**  
-- 🌐 **Auto-translation and multilingual support**
-
----
-
-### 📌 Example APIs planned
-
-| Category        | APIs                                |
-|-----------------|-------------------------------------|
-| Username lookup | `GitHub`, `Reddit`, etc.            |
-| Email check     | `Hunter.io`, `EmailRep`, etc.       |
-| IP/Domain       | `Shodan`, `IPinfo`, etc.            |
-| Passwords/leaks | `HaveIBeenPwned`, `LeakCheck`, etc. |
-| Phones          | `Numverify`, `PhoneInfoga`, etc.    |
-
-> ⚠️ Full API list will be published closer to release.
+> ℹ️ CreepyEYE PRO is closed-source and commercial. This repository stays the free and open
+> **CreepyEYE Genesis** edition.
 
 ---
 
