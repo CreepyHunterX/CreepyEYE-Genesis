@@ -10,7 +10,7 @@ import logging
 from settings.proxy.tor import get_smart_session
 from urllib.parse import quote
 from settings.translations import check_messages, error_details, status_messages
-from settings.helpers import log_error_red  
+from settings.helpers import log_error_red, module_result
 from termcolor import colored
 
 logging.basicConfig(
@@ -20,7 +20,8 @@ logging.basicConfig(
 
 SOCIALS = {
     "GitHub": lambda u: f"https://github.com/{u}",
-    "Twitter": lambda u: f"https://twitter.com/{u}",
+    # X (кол. Twitter) — twitter.com редіректить/віддає різні статуси, x.com надійніше.
+    "X": lambda u: f"https://x.com/{u}",
     "Instagram": lambda u: f"https://www.instagram.com/{u}",
     "TikTok": lambda u: f"https://www.tiktok.com/@{u}",
     "Facebook": lambda u: f"https://www.facebook.com/{u}",
@@ -28,7 +29,8 @@ SOCIALS = {
     "Bitbucket": lambda u: f"https://bitbucket.org/{u}",
     "Reddit": lambda u: f"https://www.reddit.com/user/{u}",
     "Twitch": lambda u: f"https://www.twitch.tv/{u}",
-    "StackOverflow": lambda u: f"https://stackoverflow.com/users/{u}",
+    # StackOverflow прибрано: профіль вимагає числовий ID у URL (/users/<id>),
+    # тож перевірка за нікнеймом завжди хибна.
     "Kaggle": lambda u: f"https://www.kaggle.com/{u}",
     "Medium": lambda u: f"https://medium.com/@{u}",
     "SoundCloud": lambda u: f"https://soundcloud.com/{u}",
@@ -62,12 +64,11 @@ def check_connection(url, name, language="en"):
     
 def search_by_sites_username(username, language="en"):
     print(check_messages[language]["username_search"].format(query=username))
-    results = []
+    sites = []
     for name, url_fn in SOCIALS.items():
         safe_username = quote(username.replace(" ", ""))
-        raw_url = url_fn(safe_username)
-        url = raw_url
+        url = url_fn(safe_username)
         is_found = check_connection(url, name, language)
-        status = "✅" if is_found else "❌"
-        results.append((name, url, status))
-    return results
+        sites.append({"site": name, "url": url, "found": bool(is_found)})
+    found_any = any(s["found"] for s in sites)
+    return module_result("username", "ok" if found_any else "empty", data={"sites": sites})

@@ -6,7 +6,7 @@
 # ================================
 
 
-import logging, shutil, platform, os, locale, subprocess, sys, time 
+import logging, shutil, platform, os, locale, subprocess, sys, time, json
 from pathlib import Path
 from settings.translations import settings_details, error_details, menu_details
 from settings.install_if_missing import check_and_install
@@ -44,10 +44,11 @@ except ImportError:
         for _ in range(3): 
             ask = input(settings_details[language]["some_modules_missing"]).strip().lower()
             if ask in ("y", "yes"):
-                check_and_install("termcolor", language)
-                check_and_install("requests", language)
-                check_and_install("python-dotenv", language)
-                check_and_install("rich", language)
+                check_and_install("termcolor", language=language)
+                check_and_install("requests", language=language)
+                check_and_install("dotenv", "python-dotenv", language=language)
+                check_and_install("rich", language=language)
+                check_and_install("socks", "PySocks", language=language)
                 import importlib
                 importlib.import_module("termcolor")
                 return
@@ -92,9 +93,43 @@ def log_warning_yellow(message: str):
 def log_error_red(message: str, exc: Exception = None):
     colored_msg = colored(message, "red")
     if exc:
+        # УВАГА: exc_info=True друкує повний трейсбек ПОВЗ _redact(). Якщо колись
+        # вмикати трейсбеки (напр. для DEBUG), спершу відредагуй їх, бо ключі з
+        # URL (Hunter/Whois/NumVerify) знову опиняться в терміналі й скріншотах.
         logging.error(colored_msg, exc_info=True)
     else:
         logging.error(colored_msg)
+
+
+# ==================== Output helpers ====================
+_console = None
+
+
+def _get_console():
+    # Лінивий імпорт rich, щоб не ламати fallback-встановлення залежностей.
+    global _console
+    if _console is None:
+        from rich.console import Console
+        _console = Console()
+    return _console
+
+
+def print_json(data):
+    """Красивий JSON через rich (підсвітка + коректна кирилиця)."""
+    try:
+        console = _get_console()
+        if isinstance(data, (dict, list)):
+            console.print_json(data=data)
+        else:
+            console.print(data)
+    except Exception:
+        print(json.dumps(data, indent=2, ensure_ascii=False, default=str))
+
+
+def module_result(module, status, data=None, error=None):
+    """Єдина схема результату модуля для збирання у звіт.
+    status: "ok" | "empty" | "error"."""
+    return {"module": module, "status": status, "data": data, "error": error}
 
 def open_api_env(language="en"):
     path = Path("settings/api/api_keys.env")

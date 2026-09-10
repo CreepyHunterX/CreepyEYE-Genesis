@@ -55,19 +55,25 @@ status_messages = {
         "results_found": "[+] Знайдено:",
         "no_results": "[-] Нічого не знайдено.",
         "tor_status_active": "[+] Tor увімкнено — з'єднання зашифровано",
+        "tor_fallback_direct": "[!] Tor: неактивний — запити йдуть напряму (без анонімізації)",
+        "tor_disabled": "[!] Tor: вимкнено в конфігурації — запити йдуть напряму",
         "": ""
     },
     "en": {
         "processing": "[~] Processing query: {query}",
         "results_found": "[+] Found:",
         "no_results": "[-] No results found.",
-        "tor_status_active": "[+] Tor routing enabled – connection anonymized"
+        "tor_status_active": "[+] Tor routing enabled – connection anonymized",
+        "tor_fallback_direct": "[!] Tor: inactive — requests go directly (no anonymization)",
+        "tor_disabled": "[!] Tor: disabled in config — requests go directly"
     },
     "ru": {
         "processing": "[~] Обработка запроса: {query}",
         "results_found": "[+] Найдено:",
         "no_results": "[-] Ничего не найдено.",
-        "tor_status_active": "[+] Tor включен — соединение зашифровано"
+        "tor_status_active": "[+] Tor включен — соединение зашифровано",
+        "tor_fallback_direct": "[!] Tor: неактивен — запросы идут напрямую (без анонимизации)",
+        "tor_disabled": "[!] Tor: отключён в конфигурации — запросы идут напрямую"
     }
 }
 
@@ -77,6 +83,10 @@ error_details = {
         "api_error": "[!] Помилка API: {e}",
         "error": "[!] Сталася помилка {e}",
         "json_error": "[!] Помилка декодування JSON відповіді: {e}",
+        "json_decode_error": "[!] Помилка декодування JSON: {e}",
+        "http_401": "[!] 401 — невірний або відсутній API-ключ",
+        "http_403": "[!] 403 — доступ заборонено (обмеження плану)",
+        "http_429": "[!] 429 — перевищено ліміт запитів",
         "empty_response": "[!] Сервер повернув порожню відповідь.",
         "request_timeout": "[!] Тайм-аут при запиті до {url}",
         "request_error": "[!] Помилка при запиті до {url}: {e}",
@@ -96,6 +106,10 @@ error_details = {
         "api_error": "[!] API error: {e}",
         "error": "[!] An error occurred: {e}",
         "json_error": "[!] JSON response decoding error: {e}",
+        "json_decode_error": "[!] JSON decode error: {e}",
+        "http_401": "[!] 401 — invalid or missing API key",
+        "http_403": "[!] 403 — access denied (plan restriction)",
+        "http_429": "[!] 429 — rate limit exceeded",
         "empty_response": "[!] Server returned empty response.",
         "request_timeout": "[!] Request to {url} timed out",
         "request_error": "[!] Error while requesting {url}: {e}",
@@ -114,6 +128,10 @@ error_details = {
         "api_error": "[!] Ошибка API: {e}",
         "error": "[!] Произошла ошибка {e}",
         "json_error": "[!] Ошибка декодирования JSON ответа: {e}",
+        "json_decode_error": "[!] Ошибка декодирования JSON: {e}",
+        "http_401": "[!] 401 — неверный или отсутствующий API-ключ",
+        "http_403": "[!] 403 — доступ запрещён (ограничение плана)",
+        "http_429": "[!] 429 — превышен лимит запросов",
         "empty_response": "[!] Сервер вернул пустой ответ.",
         "request_timeout": "[!] Тайм-аут при запросе к {url}",
         "request_error": "[!] Ошибка при запросе к {url}: {e}",
@@ -187,8 +205,12 @@ menu_details = {
         "input_telegram_username": "Введіть Telegram псевдонім (без @): ",
         "tor_enabled": "[+] Tor увімкнено!",
         "tor_ip": "[+] IP через Tor: {ip}",
-        "tor_not_running": "[-] Tor не запущений. Запусти Tor (наприклад, через Tor Browser або tor.exe)"
-
+        "tor_not_running": "[-] Tor не запущений. Запусти Tor (наприклад, через Tor Browser або tor.exe)",
+        "json_toggle": "9. JSON-вивід: {state}",
+        "json_state_on": "УВІМК",
+        "json_state_off": "ВИМК",
+        "save_report_prompt": "Зберегти повний звіт? (y/n): ",
+        "report_saved": "[+] Звіт збережено: {path}"
     },
     "en": {
         "press_any_key": "Press any key to continue...",
@@ -203,8 +225,13 @@ menu_details = {
         "input_phone": "Enter phone number (in international format, e.g., +380XXXXXXXXX or +1XXXXXXXXXX): ",
         "input_telegram_username": "Enter Telegram username (without @): ",
         "tor_enabled": "[+] Tor is enabled!",
-        "tor_ip": "[+] IP via Tor: {ip}",  
-        "tor_not_running": "[-] Tor is not running. Start Tor (e.g., via Tor Browser or tor.exe)"
+        "tor_ip": "[+] IP via Tor: {ip}",
+        "tor_not_running": "[-] Tor is not running. Start Tor (e.g., via Tor Browser or tor.exe)",
+        "json_toggle": "9. JSON output: {state}",
+        "json_state_on": "ON",
+        "json_state_off": "OFF",
+        "save_report_prompt": "Save full report? (y/n): ",
+        "report_saved": "[+] Report saved: {path}"
     },
 
     "ru": {
@@ -221,7 +248,12 @@ menu_details = {
         "input_telegram_username": "Введите Telegram псевдоним (без @): ",
         "tor_enabled": "[+] Tor включен!",
         "tor_ip": "[+] IP через Tor: {ip}",
-        "tor_not_running": "[-] Tor не запущен. Запустите Tor (например, через Tor Browser или tor.exe)"
+        "tor_not_running": "[-] Tor не запущен. Запустите Tor (например, через Tor Browser или tor.exe)",
+        "json_toggle": "9. JSON-вывод: {state}",
+        "json_state_on": "ВКЛ",
+        "json_state_off": "ВЫКЛ",
+        "save_report_prompt": "Сохранить полный отчёт? (y/n): ",
+        "report_saved": "[+] Отчёт сохранён: {path}"
     }
 }
 

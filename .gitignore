@@ -2,3 +2,5 @@
 __pycache__/
 *.py[cod]
 settings/api/api_keys.env
+# Звіти сканів містять дані про ціль — не потрапляти у форки/PR.
+reports/

@@ -8,8 +8,8 @@
 import json, logging
 from settings.translations import status_messages, info_details, error_details, check_messages, warnings
 from settings.api.api import GREYNOISE_API_KEY, validate_api_key
-from settings.config import SHOW_JSON
-from settings.helpers import log_error_red, log_warning_yellow
+from settings import config
+from settings.helpers import log_error_red, log_warning_yellow, print_json, module_result
 from settings.make_request import make_request
 from termcolor import colored
 
@@ -19,7 +19,7 @@ def greynoise(ip, language="en"):
     logger.info("\n" + check_messages[language]["greynoise_check"].format(query=ip))
 
     if not validate_api_key(GREYNOISE_API_KEY, "GreyNoise", language=language):
-        return
+        return module_result("greynoise", "error", error="missing or invalid API key")
 
     paid_url = f"https://api.greynoise.io/v3/noise/{ip}"
     free_url = f"https://api.greynoise.io/v3/community/{ip}"
@@ -29,7 +29,7 @@ def greynoise(ip, language="en"):
             "GET",
             paid_url,
             api_key=GREYNOISE_API_KEY,
-            key_type="Bearer",
+            key_type="Key",
             language=language
         )
 
@@ -44,18 +44,23 @@ def greynoise(ip, language="en"):
             )
 
         if response and isinstance(response, dict):
-            if SHOW_JSON:
-                print(json.dumps(response, indent=2, ensure_ascii=False))
+            if config.SHOW_JSON:
+                print_json(response)
 
             if "classification" in response:
                 print(colored(info_details[language]["classification"], "green"), f"{response.get('classification', 'N/A')}")
                 print(colored(info_details[language]["name"], "green"), f"{response.get('name', 'N/A')}")
+                return module_result("greynoise", "ok", data=response)
             else:
                 log_warning_yellow(status_messages[language]["no_results"])
+                return module_result("greynoise", "empty")
         else:
             log_warning_yellow(error_details[language]["empty_response"])
+            return module_result("greynoise", "empty")
 
     except json.JSONDecodeError as e:
         log_error_red(error_details[language]["json_error"].format(e=e))
+        return module_result("greynoise", "error", error=str(e))
     except Exception as e:
         log_error_red(error_details[language]["error"].format(e=e))
+        return module_result("greynoise", "error", error=str(e))

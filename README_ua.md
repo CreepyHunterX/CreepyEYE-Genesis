@@ -25,12 +25,12 @@
 ## 🛠️ Можливості
 
 🔎 Перевірка існування псевдоніму у соцмережах:  
-&nbsp;&nbsp;&nbsp;&nbsp;`GitHub`, `Twitter`, `Instagram`, `TikTok`, `Facebook`, `GitLab`, `Bitbucket`, `Reddit`, `Twitch`, `StackOverflow`, `Kaggle`, `Medium`, `SoundCloud`, `Spotify`
+&nbsp;&nbsp;&nbsp;&nbsp;`GitHub`, `X`, `Instagram`, `TikTok`, `Facebook`, `GitLab`, `Bitbucket`, `Reddit`, `Twitch`, `Kaggle`, `Medium`, `SoundCloud`, `Spotify`
 
 📧 Перевірка email:  
-&nbsp;&nbsp;&nbsp;&nbsp;через `Hunter.io`, `EmailRep.io`, `SpiderFoot`  
+&nbsp;&nbsp;&nbsp;&nbsp;через `Hunter.io`, `EmailRep.io`  
 🌐 IP/домен перевірка:  
-&nbsp;&nbsp;&nbsp;&nbsp;через `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`, `SpiderFoot`  
+&nbsp;&nbsp;&nbsp;&nbsp;через `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`  
 📱 Телефонні номери: `Numverify`  
 🧅 Підтримка Tor для анонімності  
 🈯 Меню з вибором мови (`Українська` / `Англійська` / `Російська`)  
@@ -69,16 +69,7 @@
    pip install -r requirements.txt
    ```
 
-5. **(Опційно) Встановіть [SpiderFoot](https://github.com/smicallef/spiderfoot)**  
-   Якщо ви хочете використовувати функції SpiderFoot, його потрібно встановити окремо:
-   ```sh
-   git clone https://github.com/smicallef/spiderfoot.git
-   cd spiderfoot
-   pip install -r requirements.txt
-   ```
-   Після встановлення поверніться у директорію CreepyEYE Genesis для запуску основної програми.
-
-6. **Запустіть програму**  
+5. **Запустіть програму**  
    ```sh
    python ce_genesis.py
    ```

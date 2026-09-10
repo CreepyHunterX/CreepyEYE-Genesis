@@ -8,6 +8,11 @@
 
 import socket, requests
 from settings.translations import status_messages
+from settings.config import USE_TOR_PROXY, TOR_PROXY
+
+# Друкуємо статус Tor лише один раз за запуск, а не на кожен запит.
+_tor_notice_shown = False
+
 
 def is_tor_running(host="127.0.0.1", port=9050):
     try:
@@ -19,8 +24,8 @@ def is_tor_running(host="127.0.0.1", port=9050):
 
 def get_tor_proxies():
     return {
-        'http': 'socks5h://127.0.0.1:9050',
-        'https': 'socks5h://127.0.0.1:9050'
+        'http': TOR_PROXY,
+        'https': TOR_PROXY,
     }
 
 
@@ -34,9 +39,26 @@ def test_tor_identity():
     except Exception:
         return None
 
-def get_smart_session(language="en"):
-    session = requests.Session()
-    if is_tor_running():
-        session.proxies.update(get_tor_proxies())
+def announce_tor_status(language="en"):
+    """Один раз при старті чітко показуємо стан Tor. Мовчазний фолбек напряму
+    для OSINT-тулзи, що обіцяє анонімність, — неприйнятний."""
+    global _tor_notice_shown
+    if not USE_TOR_PROXY:
+        print(status_messages[language]["tor_disabled"])
+    elif is_tor_running():
         print(status_messages[language]["tor_status_active"])
+    else:
+        print(status_messages[language]["tor_fallback_direct"])
+    _tor_notice_shown = True
+
+
+def get_smart_session(language="en"):
+    global _tor_notice_shown
+    session = requests.Session()
+    if USE_TOR_PROXY and is_tor_running():
+        session.proxies.update(get_tor_proxies())
+    # Статус оголошується один раз при старті (announce_tor_status). Якщо його
+    # чомусь не викликали — підстрахуємось і покажемо тут теж лише раз.
+    if not _tor_notice_shown:
+        announce_tor_status(language)
     return session

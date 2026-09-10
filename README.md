@@ -26,12 +26,12 @@
 ## 🛠️ Features
 
 🔎 Username existence check across social media platforms:  
-&nbsp;&nbsp;&nbsp;&nbsp;`GitHub`, `Twitter`, `Instagram`, `TikTok`, `Facebook`, `GitLab`, `Bitbucket`, `Reddit`, `Twitch`, `StackOverflow`, `Kaggle`, `Medium`, `SoundCloud`, `Spotify`
+&nbsp;&nbsp;&nbsp;&nbsp;`GitHub`, `X`, `Instagram`, `TikTok`, `Facebook`, `GitLab`, `Bitbucket`, `Reddit`, `Twitch`, `Kaggle`, `Medium`, `SoundCloud`, `Spotify`
 
 📧 Email verification:  
-&nbsp;&nbsp;&nbsp;&nbsp;via `Hunter.io`, `EmailRep.io`, `SpiderFoot`  
+&nbsp;&nbsp;&nbsp;&nbsp;via `Hunter.io`, `EmailRep.io`  
 🌐 IP/domain lookup:  
-&nbsp;&nbsp;&nbsp;&nbsp;via `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`, `SpiderFoot`  
+&nbsp;&nbsp;&nbsp;&nbsp;via `IPinfo`, `Shodan`, `AbuseIPDB`, `VirusTotal`, `GreyNoise`, `Whois`  
 📱 Phone numbers: `Numverify`  
 🧅 Tor support for anonymity  
 🈯 Language selection menu (`Ukrainian` / `English` / `Russian`)  
@@ -70,16 +70,7 @@
    pip install -r requirements.txt
    ```
 
-5. **(Optional) Install [SpiderFoot](https://github.com/smicallef/spiderfoot)**  
-   To use SpiderFoot features, install it separately:  
-   ```sh
-   git clone https://github.com/smicallef/spiderfoot.git
-   cd spiderfoot
-   pip install -r requirements.txt
-   ```  
-   After installation, return to the CreepyEYE Genesis directory to run the main program.
-
-6. **Run the program**  
+5. **Run the program**  
    ```sh
    python ce_genesis.py
    ```

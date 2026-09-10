@@ -7,8 +7,12 @@
 
 import os, logging
 
+VERSION = "1.1"
 SPIDERFOOT_PORT = 5001
-SHOW_JSON = True
+# Стан JSON-виводу тримаємо тут і читаємо як config.SHOW_JSON у момент виклику,
+# а НЕ через `from settings.config import SHOW_JSON` (інакше значення копіюється
+# один раз при старті й перемикач у меню не працюватиме під час сесії).
+SHOW_JSON = False
 spiderfoot_process = None
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 USE_TOR_PROXY = True  
