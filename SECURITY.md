@@ -11,6 +11,7 @@
 ### Data Handling
 
 * CreepyEYE does **not store your API keys** (keys are saved locally in `settings/api/api_keys.env`)
+* Scan reports you choose to save stay **on your machine** in `reports/` — that folder is gitignored, and API keys are stripped from the data before it is written
 * You are responsible for the data you input (emails, IPs, usernames, domains, phone numbers)
 * Do **not** transmit personal information of others to third parties
 
@@ -32,8 +33,8 @@
 ---
 
 ### Available translations
-- 🇺🇦 [Українська версія](./README_ua.md)
-- 🇷🇺 [Русская Версия](./README_ru.md)
+- 🇺🇦 [Українська версія](./SECURITY_ua.md)
+- 🇷🇺 [Русская Версия](./SECURITY_ru.md)
 - 🇬🇧 English Version (This Translation)
 
 

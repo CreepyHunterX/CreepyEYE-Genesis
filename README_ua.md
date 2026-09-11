@@ -17,7 +17,7 @@
 
 | Windows | Linux |
 |---------|-------|
-| ![CE Win](./PNG/CE_Windows_ua.png) | ![CE Linux](./PNG/CE_Linux_ua.png) |
+| <img src="./PNG/CE_Windows_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Linux" width="340"> |
 
 
 
@@ -34,6 +34,8 @@
 📱 Телефонні номери: `Numverify`  
 🧅 Підтримка Tor для анонімності  
 🈯 Меню з вибором мови (`Українська` / `Англійська` / `Російська`)  
+🧾 Сирий JSON-вивід — перемикається з меню (пункт `9`), діє одразу  
+💾 Експорт звітів — збереження скану у JSON в теку `reports/`  
 ⚙️ Автоматичне встановлення залежностей
 
 ---
@@ -42,9 +44,9 @@
 
 | Мова | Windows | Linux |
 |----------|---------|-------|
-| Українська | ![CE Win UA](./PNG/CE_Windows_ua.png) | ![CE Linux UA](./PNG/CE_Linux_ua.png) |
-| Російська | ![CE Win RU](./PNG/CE_Windows_ru.png) | ![CE Linux RU](./PNG/CE_Linux_ru.png) |
-| Англіська  | ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
+| Українська | <img src="./PNG/CE_Windows_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Linux" width="340"> |
+| Російська | <img src="./PNG/CE_Windows_ru.png" alt="CreepyEYE Genesis - Russian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ru.png" alt="CreepyEYE Genesis - Russian UI on Linux" width="340"> |
+| Англійська | <img src="./PNG/CE_Windows.png" alt="CreepyEYE Genesis - English UI on Windows" width="340"> | <img src="./PNG/CE_Linux.png" alt="CreepyEYE Genesis - English UI on Linux" width="340"> |
 
 ---
 
@@ -74,13 +76,21 @@
    python ce_genesis.py
    ```
 
+6. **Запустіть тести** *(необов'язково, для контриб'юторів)*  
+   ```sh
+   python -m unittest discover -s tests
+   ```
+
 ---
 
 ## Налаштування API ключів
 
-Під час запуску в програмі буде опція створити або відкрити файл з API ключами (`settings/api/api_keys.env`).  
-Ви можете додати або змінити ключі у цьому файлі у будь-який час.
-Відкрийте цей файл та вставте свої ключі:
+API ключі зберігаються у файлі `settings/api/api_keys.env`.  
+Відкрийте його з головного меню — пункт **`6. Налаштування API`**: програма створить файл із
+шаблону, якщо його ще немає, відкриє у вашому редакторі за замовчуванням, а потім попросить
+перезапустити CreepyEYE, щоб нові значення підхопилися. Файл можна редагувати вручну будь-коли.  
+Значення-заповнювачі з шаблону (`your_shodan_api_key`, …) вважаються відсутніми ключами, тож
+замініть ті, якими плануєте користуватися:
 
 - SHODAN_API_KEY
 - IPINFO_TOKEN
@@ -113,6 +123,33 @@
 
 Для підвищення анонімності рекомендується запускати Tor (наприклад, через Tor Browser або tor.exe).  
 Програма автоматично визначає, чи працює Tor, і використовує його для запитів.
+
+---
+
+## JSON-вивід
+
+Пункт меню **`9`** вмикає та вимикає сирий JSON-вивід (`JSON-вивід: УВІМК / ВИМК`). Коли він
+увімкнений, кожен модуль додатково друкує в термінал незмінену відповідь API — зручно для
+налагодження або щоб передати результат далі. Перемикач діє одразу, без перезапуску, і **не**
+впливає на вміст збережених звітів.
+
+---
+
+## Звіти
+
+Після кожного скану програма питає `Зберегти повний звіт? (y/n)`. Якщо відповісти `y`, результат
+запишеться у файл:
+
+```
+reports/<ціль>_<тип>_<РРРРММДД-ГГХВСС>.json
+```
+
+Це JSON у UTF-8, який містить версію інструменту, ціль і її тип, час початку та завершення в UTC,
+ознаку того, чи справді запити йшли через Tor, і результат кожного модуля, що відпрацював.
+API ключі вирізаються з даних перед записом на диск.
+
+> ⚠️ Теку `reports/` навмисно додано до `.gitignore` — результати сканів містять інформацію про
+> вашу ціль і не повинні потрапляти у форки, pull request-и чи issues.
 
 ---
 

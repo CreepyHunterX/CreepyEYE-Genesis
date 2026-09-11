@@ -17,7 +17,7 @@
 
 | Windows | Linux |
 |---------|-------|
-| ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
+| <img src="./PNG/CE_Windows.png" alt="CreepyEYE Genesis - English UI on Windows" width="340"> | <img src="./PNG/CE_Linux.png" alt="CreepyEYE Genesis - English UI on Linux" width="340"> |
 
 
 
@@ -35,6 +35,8 @@
 📱 Phone numbers: `Numverify`  
 🧅 Tor support for anonymity  
 🈯 Language selection menu (`Ukrainian` / `English` / `Russian`)  
+🧾 Raw JSON output — toggled from the menu (option `9`), applies instantly  
+💾 Report export — save any scan as JSON into `reports/`  
 ⚙️ Automatic dependency installation
 
 ---
@@ -43,9 +45,9 @@
 
 | Language | Windows | Linux |
 |----------|---------|-------|
-| English  | ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
-| Ukrainian | ![CE Win UA](./PNG/CE_Windows_ua.png) | ![CE Linux UA](./PNG/CE_Linux_ua.png) |
-| Russian  | ![CE Win RU](./PNG/CE_Windows_ru.png) | ![CE Linux RU](./PNG/CE_Linux_ru.png) |
+| English  | <img src="./PNG/CE_Windows.png" alt="CreepyEYE Genesis - English UI on Windows" width="340"> | <img src="./PNG/CE_Linux.png" alt="CreepyEYE Genesis - English UI on Linux" width="340"> |
+| Ukrainian | <img src="./PNG/CE_Windows_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Linux" width="340"> |
+| Russian  | <img src="./PNG/CE_Windows_ru.png" alt="CreepyEYE Genesis - Russian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ru.png" alt="CreepyEYE Genesis - Russian UI on Linux" width="340"> |
 
 ---
 
@@ -75,13 +77,21 @@
    python ce_genesis.py
    ```
 
+6. **Run the tests** *(optional, for contributors)*  
+   ```sh
+   python -m unittest discover -s tests
+   ```
+
 ---
 
 ## API Keys Setup
 
-When you start the program, you will have an option to create or open the API keys file (`settings/api/api_keys.env`).  
-You can add or modify keys in this file anytime.  
-Open the file and insert your keys:
+API keys are stored in `settings/api/api_keys.env`.  
+Open it from the main menu — option **`6. API settings`**: the program creates the file from a
+template if it does not exist yet, opens it in your default editor, and then asks you to restart
+CreepyEYE so the new values are loaded. You can also edit the file by hand at any time.  
+The template placeholders (`your_shodan_api_key`, …) are treated as missing keys, so replace the
+ones you intend to use:
 
 - SHODAN_API_KEY  
 - IPINFO_TOKEN  
@@ -117,10 +127,42 @@ The program automatically detects if Tor is running and uses it for requests.
 
 ---
 
+## JSON Output
+
+Menu option **`9`** toggles raw JSON output (`JSON output: ON / OFF`). When it is ON, every module
+also prints the unmodified API response to the terminal, which is useful for debugging or for
+piping results somewhere else. The switch takes effect immediately — no restart — and it does not
+change what is written into saved reports.
+
+---
+
+## Reports
+
+After every scan the program asks `Save full report? (y/n)`. Answer `y` and the result is written to:
+
+```
+reports/<target>_<type>_<YYYYMMDD-HHMMSS>.json
+```
+
+The file is UTF-8 JSON and holds the tool version, the target and its type, the UTC start/finish
+timestamps, whether the requests actually went through Tor, and the result of every module that ran.
+API keys are stripped from the data before it is written to disk.
+
+> ⚠️ `reports/` is listed in `.gitignore` on purpose — scan results contain information about your
+> target and must not end up in forks, pull requests or issues.
+
+---
+
 ## Important Notice
 
 This tool is intended for ethical OSINT only.  
 Use responsibly and within the law.
+
+---
+
+## License
+
+[MIT License](LICENSE)
 
 ---
 

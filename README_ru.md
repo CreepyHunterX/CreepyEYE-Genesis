@@ -23,7 +23,7 @@
 
 | Windows | Linux |
 |---------|-------|
-| ![CE Win](./PNG/CE_Windows_ru.png) | ![CE Linux](./PNG/CE_Linux_ru.png) |
+| <img src="./PNG/CE_Windows_ru.png" alt="CreepyEYE Genesis - Russian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ru.png" alt="CreepyEYE Genesis - Russian UI on Linux" width="340"> |
 
 
 
@@ -40,6 +40,8 @@
 📱 Телефоны: `Numverify`  
 🧅 Поддержка Tor для анонимности  
 🈯 Меню выбора языка (`Украинский` / `Английский` / `Русский`)  
+🧾 Сырой JSON-вывод — переключается из меню (пункт `9`), действует сразу  
+💾 Экспорт отчётов — сохранение скана в JSON в папку `reports/`  
 ⚙️ Автоматическая установка зависимостей
 
 ---
@@ -48,9 +50,9 @@
 
 | Язык | Windows | Linux |
 |----------|---------|-------|
-| Русский  | ![CE Win RU](./PNG/CE_Windows_ru.png) | ![CE Linux RU](./PNG/CE_Linux_ru.png) |
-| Украинский | ![CE Win UA](./PNG/CE_Windows_ua.png) | ![CE Linux UA](./PNG/CE_Linux_ua.png) |
-| Английской | ![CE Win](./PNG/CE_Windows.png) | ![CE Linux](./PNG/CE_Linux.png) |
+| Русский  | <img src="./PNG/CE_Windows_ru.png" alt="CreepyEYE Genesis - Russian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ru.png" alt="CreepyEYE Genesis - Russian UI on Linux" width="340"> |
+| Украинский | <img src="./PNG/CE_Windows_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Windows" width="340"> | <img src="./PNG/CE_Linux_ua.png" alt="CreepyEYE Genesis - Ukrainian UI on Linux" width="340"> |
+| Английский | <img src="./PNG/CE_Windows.png" alt="CreepyEYE Genesis - English UI on Windows" width="340"> | <img src="./PNG/CE_Linux.png" alt="CreepyEYE Genesis - English UI on Linux" width="340"> |
 
 ---
 
@@ -82,13 +84,22 @@
    python ce_genesis.py
    ```
 
+6. **Запуск тестов** *(необязательно, для контрибьюторов)*
+
+   ```sh
+   python -m unittest discover -s tests
+   ```
+
 ---
 
 ## Настройка API ключей
 
-При запуске программы вы сможете создать или открыть файл с API ключами (`settings/api/api_keys.env`).
-Вы можете добавлять или изменять ключи в любое время.
-Откройте файл и вставьте ваши ключи:
+API ключи хранятся в файле `settings/api/api_keys.env`.
+Откройте его из главного меню — пункт **`6. Настройки API`**: программа создаст файл из шаблона,
+если его ещё нет, откроет в вашем редакторе по умолчанию, а затем попросит перезапустить
+CreepyEYE, чтобы новые значения подхватились. Файл можно править вручную в любое время.
+Значения-заглушки из шаблона (`your_shodan_api_key`, …) считаются отсутствующими ключами, поэтому
+замените те, которыми собираетесь пользоваться:
 
 * SHODAN\_API\_KEY
 * IPINFO\_TOKEN
@@ -109,7 +120,7 @@
 | AbuseIPDB    | [https://www.abuseipdb.com/](https://www.abuseipdb.com/)   | Проверка, не сообщалось ли о вредоносной активности с IP |
 | Hunter.io    | [https://hunter.io/](https://hunter.io/)                   | Проверка email и поиск по домену                         |
 | Numverify    | [https://numverify.com/](https://numverify.com/)           | Проверка номеров телефонов                               |
-| GreyNoise    | [https://greynoise.io/](https://api.greynoise.io/)     | Контекст сканеров/ботов                                  |
+| GreyNoise    | [https://greynoise.io/](https://greynoise.io/)     | Контекст сканеров/ботов                                  |
 | EmailRep.io  | [https://emailrep.io/](https://emailrep.io/)               | Репутация email адресов                                  |
 | WhoisXML API | [https://whoisxmlapi.com/](https://whoisxmlapi.com/)       | WHOIS данные и информация о доменах                      |
 | VirusTotal   | [https://www.virustotal.com/](https://www.virustotal.com/) | Сканирование IP, доменов и файлов на вирусы              |
@@ -123,10 +134,43 @@
 
 ---
 
+## JSON-вывод
+
+Пункт меню **`9`** включает и выключает сырой JSON-вывод (`JSON-вывод: ВКЛ / ВЫКЛ`). Когда он
+включён, каждый модуль дополнительно печатает в терминал неизменённый ответ API — удобно для
+отладки или чтобы передать результат дальше. Переключатель действует сразу, без перезапуска, и
+**не** влияет на содержимое сохранённых отчётов.
+
+---
+
+## Отчёты
+
+После каждого скана программа спрашивает `Сохранить полный отчёт? (y/n)`. Если ответить `y`,
+результат запишется в файл:
+
+```
+reports/<цель>_<тип>_<ГГГГММДД-ЧЧММСС>.json
+```
+
+Это JSON в UTF-8, содержащий версию инструмента, цель и её тип, время начала и завершения в UTC,
+признак того, действительно ли запросы шли через Tor, и результат каждого отработавшего модуля.
+API ключи вырезаются из данных перед записью на диск.
+
+> ⚠️ Папка `reports/` намеренно добавлена в `.gitignore` — результаты сканов содержат информацию
+> о вашей цели и не должны попадать в форки, pull request-ы или issues.
+
+---
+
 ## Важное уведомление
 
 Инструмент предназначен только для этического OSINT.
 Используйте ответственно и в рамках закона.
+
+---
+
+## Лицензия
+
+[MIT License](LICENSE)
 
 ---
 
@@ -164,6 +208,6 @@
 
 - 🇺🇦 [Українська версія](./README_ua.md)
 - 🇷🇺 Русская версия (Этот перевод)
-- 🇬🇧 [Englis](./README.md)
+- 🇬🇧 [English Version](./README.md)
 
 ---
